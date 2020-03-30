@@ -1,0 +1,15 @@
+--- a/modules/admin-full/luasrc/model/cbi/admin_network/wifi.lua
++++ b/modules/admin-full/luasrc/model/cbi/admin_network/wifi0.lua
+@@ -201,6 +201,12 @@
+ 		htmode:value("HT20", "20MHz")
+ 		htmode:value("HT40", "40MHz")
+ 
++		chanbw = s:taboption("advanced", ListValue, "chanbw", translate(" RF Channel bandwidth"))
++		chanbw:value("20", "20MHz")
++		chanbw:value("10", "10MHz")
++		chanbw:value("5", "5MHz")
++
++
+ 		function mode.cfgvalue(...)
+ 			local v = Value.cfgvalue(...)
+ 			if v == "11na" then
