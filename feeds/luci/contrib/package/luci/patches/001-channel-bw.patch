@@ -1,6 +1,6 @@
---- a/modules/admin-full/luasrc/model/cbi/admin_network/wifi.lua
-+++ b/modules/admin-full/luasrc/model/cbi/admin_network/wifi0.lua
-@@ -201,6 +201,12 @@
+--- wifi.lua	2020-03-29 20:31:04.359688577 +0200
++++ wifi0.lua	2020-03-30 16:35:38.498221409 +0200
+@@ -201,6 +201,26 @@
  		htmode:value("HT20", "20MHz")
  		htmode:value("HT40", "40MHz")
  
@@ -8,6 +8,20 @@
 +		chanbw:value("20", "20MHz")
 +		chanbw:value("10", "10MHz")
 +		chanbw:value("5", "5MHz")
++
++		require_mode = s:taboption("advanced", ListValue, "require_mode", translate(" Require mode"))
++
++		require_mode:value("g", "802.11g")
++		require_mode:value("n", "802.11n")
++		require_mode:value("ac", "802.11ac")
++		translate("This forces user to use specific standard of 802.11 , ac, n or g"))
++
++		country_ie = s:taboption("advanced", ListValue, "country_ie", translate(" Transmit regulatory code"))
++		require_mode:value("0", "No")
++		require_mode:value("1", "Yes")
++
++		s:taboption("advanced", Value, "beacon_int", translate("Beacon interval"),
++		translate("between 15 to 65535"))
 +
 +
  		function mode.cfgvalue(...)
